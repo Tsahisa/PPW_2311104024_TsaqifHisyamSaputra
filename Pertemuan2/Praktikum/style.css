@@ -1,0 +1,15 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-image: url(https://www.shutterstock.com/image-photo/businessman-thoughts-suicide-600nw-88800343.jpg);
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h2:hover {
+    text-align: center;
+    color: red;
+}
