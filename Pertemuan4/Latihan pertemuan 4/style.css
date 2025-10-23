@@ -1,0 +1,237 @@
+/* style.css - Tema McDonald's (demo)
+   Gunakan bersama index.html di atas.
+   Pastikan meletakkan gambar di assets/images/ atau sesuaikan path.
+*/
+
+:root{
+  --yellow: #FFC72C;
+  --red: #DA291C;
+  --dark: #1d1d1d;
+  --muted: #666;
+  --bg: #fff7ec;
+  --container: 1100px;
+  --radius: 10px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --glass: rgba(255,255,255,0.8);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+  margin:0;
+  color:var(--dark);
+  background:linear-gradient(180deg,#fff 0%, #fff7ec 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
+}
+
+/* Container utility */
+.container{
+  width:90%;
+  max-width:var(--container);
+  margin:0 auto;
+}
+
+/* HEADER */
+.site-header{
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:40;
+}
+.header-inner{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  padding:14px 0;
+}
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.logo{width:56px;height:auto}
+.brand-text{font-weight:800;font-size:18px;color:var(--red)}
+.brand-text .m{color:var(--red)}
+.brand-text .dot{color:#333}
+
+.main-nav{margin-left:20px; display:flex; gap:18px; flex:1}
+.main-nav .nav-link{
+  color:#333;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;
+}
+.main-nav .nav-link:hover{background:var(--bg)}
+
+.header-actions{display:flex;align-items:center;gap:12px}
+.cart-btn{
+  background:var(--yellow); border: none; padding:8px 12px; border-radius:999px;
+  font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+  position:relative;
+}
+.cart-count{
+  background:var(--red); color:white; padding:3px 7px; border-radius:999px;
+  margin-left:8px; font-size:12px; vertical-align:middle;
+}
+
+/* HERO / BANNER */
+.hero{
+  padding:28px 0;
+  background: linear-gradient(90deg, rgba(255,199,44,0.06) 0%, rgba(218,41,28,0.02) 100%);
+}
+.hero-inner{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  padding:20px 0;
+}
+.hero-text{flex:1}
+.hero-text .breadcrumb{color:var(--muted); font-size:13px; margin-bottom:8px; display:inline-block}
+.hero-text h1{
+  font-size: clamp(28px, 4.2vw, 44px);
+  margin:0 0 8px 0;
+  color:var(--dark);
+}
+.lead{color:var(--muted); margin-bottom:12px}
+
+.hero-preview{
+  width:100%;
+  max-width:480px;
+  aspect-ratio: 16/9;
+  background-size:cover;
+  background-position:center;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  border:8px solid rgba(255,255,255,0.6);
+  position:relative;
+  overflow:hidden;
+  margin:0 auto;
+}
+.hero-controls{display:flex; justify-content:center; gap:12px; padding:18px 0 8px}
+
+/* fade overlay used for crossfade effect */
+.hero-fade{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  border-radius:inherit;
+  transition:opacity 600ms ease;
+  opacity:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* dot navigation */
+.hero-dots{display:flex; gap:8px; align-items:center; margin:0 12px}
+.hero-dot{
+  width:12px; height:12px; border-radius:999px; background:rgba(0,0,0,0.14); border:0; cursor:pointer;
+  transition:transform 160ms ease, background 160ms ease;
+}
+.hero-dot:hover{transform:scale(1.08)}
+.hero-dot.active{background:var(--red)}
+.hero-dot:focus{outline:3px solid rgba(218,41,28,0.15); outline-offset:4px}
+
+/* Buttons */
+.btn{
+  font-weight:700; padding:10px 16px; border-radius:8px; cursor:pointer; border:0;
+}
+.btn.primary{background:var(--red); color:white}
+.btn.ghost{background:transparent; color:var(--red); border:1px solid rgba(218,41,28,0.08)}
+.btn.outline{background:transparent; border:1px solid #ddd; color:var(--dark)}
+.btn.small{padding:6px 10px;font-size:13px;border-radius:7px}
+
+/* MAIN LAYOUT */
+main{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:28px;
+  padding:30px 0 60px;
+  align-items:start;
+}
+.section{
+  background:transparent;
+}
+.section-title{
+  font-size:32px; text-align:center; margin:20px 0 30px; font-weight:800; color:var(--dark);
+}
+
+/* Products grid */
+.products-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap:24px;
+}
+.product{
+  background:white; border-radius:12px; padding:18px; text-align:center; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+}
+.product img{width:140px; height:120px; object-fit:contain}
+.product-name{font-weight:700; margin:0; font-size:16px}
+.product-price{color:var(--red); font-weight:800}
+.product-actions{display:flex; gap:8px}
+
+/* REKOMENDASI ASIDE */
+.aside-card{
+  background: white; border-radius:12px; padding:18px; box-shadow:var(--shadow);
+  position:sticky; top:92px;
+}
+.rekom-item{display:flex; gap:12px; align-items:center}
+.rekom-item img{width:86px; height:86px; object-fit:contain; border-radius:8px}
+.rekom-name{font-weight:700; margin:0}
+.rekom-price{color:var(--red); font-weight:800; margin:4px 0}
+
+/* FOOTER */
+.site-footer{
+  background:#fff; padding:28px 0; border-top:1px solid rgba(0,0,0,0.04)
+}
+.footer-inner{display:flex; gap:24px; justify-content:space-between}
+.footer-inner .col h4{margin:0 0 8px 0; color:var(--red)}
+.footer-inner .col p{color:var(--muted); margin:6px 0}
+
+/* MODAL */
+.modal{
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,0.45); opacity:0; pointer-events:none; transition:all 220ms ease;
+}
+.modal.open{opacity:1; pointer-events:auto}
+.modal-content{
+  width:90%; max-width:520px; background:white; border-radius:12px; padding:18px; text-align:center;
+  box-shadow:0 12px 40px rgba(0,0,0,0.28);
+}
+.modal img{width:220px; height:160px; object-fit:contain}
+.modal-close{position:absolute; right:20px; top:20px; font-size:22px; background:none; border:0; cursor:pointer}
+
+/* small interactive micro animations */
+.btn-pop{transform:scale(0.96); transition:transform 120ms ease}
+/* responsive */
+@media (max-width: 980px){
+  .hero-inner{
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+  .hero-preview{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  main{grid-template-columns:1fr; padding:18px 0 80px}
+  .header-inner{padding:12px 0}
+  .main-nav{display:none}
+  .container{width:95%}
+}
+@media (max-width:480px){
+  .hero-preview{
+    max-width: 100%;
+    aspect-ratio: 16/10;
+    border-width: 6px;
+  }
+  .hero-controls{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .product img{width:110px;height:90px}
+  .brand-text{font-size:16px}
+}

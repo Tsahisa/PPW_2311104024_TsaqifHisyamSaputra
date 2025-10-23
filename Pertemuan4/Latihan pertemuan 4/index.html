@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>McDonald's — Online Order (Demo)</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <meta name="description" content="Demo toko makanan cepat saji bergaya McDonald's — banner, produk, rekomendasi, dan keranjang sederhana.">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- Jika ingin gunakan logo asli, letakkan file di assets/images/logo.png -->
+        <img src="assets/images/mcd_logo.png" alt="McDonald's logo" class="logo" onerror="this.style.display='none'"/>
+        <div class="brand-text">
+          <span class="m">Mc</span><span class="dot">Donald's</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#" class="nav-link">Menu</a>
+        <a href="#" class="nav-link">Promo</a>
+        <a href="#" class="nav-link">Rekomendasi</a>
+        <a href="#" class="nav-link">Lokasi</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="cartBtn" class="cart-btn" aria-label="Keranjang belanja">
+          🛒 <span id="cartCount" class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section id="hero" class="hero" role="region" aria-label="Banner utama">
+    <div class="hero-inner container">
+      <div class="hero-text">
+        <small class="breadcrumb">Home › Menu</small>
+        <h1>Nikmati menu pilihan terbaik</h1>
+        <p class="lead">Cepat, hangat, dan selalu menggugah selera — pesan sekarang.</p>
+      </div>
+
+      <div class="hero-preview">
+        <!-- background image controlled via JS -->
+      </div>
+      </div>
+
+    <div class="hero-controls container">
+      <button id="prevBtn" class="btn ghost">⟵ Sebelumnya</button>
+      <div id="heroDots" class="hero-dots" role="tablist" aria-label="Navigasi banner"></div>
+      <button id="nextBtn" class="btn primary">Selanjutnya ⟶</button>
+    </div>
+  </section>  <!-- MAIN CONTENT -->
+  <main class="container" id="main">
+    <section class="section">
+      <h2 class="section-title">Sarapan Pagi</h2>
+
+      <div class="products-grid" id="products">
+        <!-- Produk di-render di HTML statis agar mudah disunting -->
+        <article class="product" data-id="1" data-name="Big Breakfast" data-price="36000">
+          <img src="assets/images/big_breakfast.png" alt="Big Breakfast">
+          <h3 class="product-name">Big Breakfast</h3>
+          <p class="product-price">Rp 36.000</p>
+          <div class="product-actions">
+            <button class="btn small outline view-btn">Lihat</button>
+            <button class="btn small primary add-btn">Tambah</button>
+          </div>
+        </article>
+
+        <article class="product" data-id="2" data-name="Chicken Muffin" data-price="24000">
+          <img src="assets/images/chicken_muffin.png" alt="Chicken Muffin">
+          <h3 class="product-name">Chicken Muffin</h3>
+          <p class="product-price">Rp 24.000</p>
+          <div class="product-actions">
+            <button class="btn small outline view-btn">Lihat</button>
+            <button class="btn small primary add-btn">Tambah</button>
+          </div>
+        </article>
+
+        <article class="product" data-id="3" data-name="Egg McMuffin" data-price="25000">
+          <img src="assets/images/egg_mcmuffin.png" alt="Egg McMuffin">
+          <h3 class="product-name">Egg McMuffin</h3>
+          <p class="product-price">Rp 25.000</p>
+          <div class="product-actions">
+            <button class="btn small outline view-btn">Lihat</button>
+            <button class="btn small primary add-btn">Tambah</button>
+          </div>
+        </article>
+
+        <article class="product" data-id="4" data-name="Sausage McMuffin" data-price="26000">
+          <img src="assets/images/sausage_mcmuffin.png" alt="Sausage McMuffin">
+          <h3 class="product-name">Sausage McMuffin</h3>
+          <p class="product-price">Rp 26.000</p>
+          <div class="product-actions">
+            <button class="btn small outline view-btn">Lihat</button>
+            <button class="btn small primary add-btn">Tambah</button>
+          </div>
+        </article>
+
+        <article class="product" data-id="4" data-name="Sausage McMuffin" data-price="29500">
+          <img src="assets/images/sausage_mcmuffin_with_egg.png" alt="Sausage McMuffin">
+          <h3 class="product-name">Sausage McMuffin</h3>
+          <p class="product-price">Rp 29.500</p>
+          <div class="product-actions">
+            <button class="btn small outline view-btn">Lihat</button>
+            <button class="btn small primary add-btn">Tambah</button>
+          </div>
+        </article>
+
+        <article class="product" data-id="4" data-name="Sausage McMuffin" data-price="28500">
+          <img src="assets/images/sausage_wrap.png" alt="Sausage McMuffin">
+          <h3 class="product-name">Sausage McMuffin</h3>
+          <p class="product-price">Rp 28.500</p>
+          <div class="product-actions">
+            <button class="btn small outline view-btn">Lihat</button>
+            <button class="btn small primary add-btn">Tambah</button>
+          </div>
+        </article>
+
+        <!-- Tambah produk lain sesuai kebutuhan -->
+      </div>
+    </section>
+
+    <aside class="rekomendasi aside-card">
+      <h3 style='text-align:center'>Rekomendasi Hari Ini</h3>
+      <div class="rekom-item">
+        <img src="assets/images/paket_hebat_korean_soy_garlic_wings.png" alt="Big Mac">
+        <div>
+          <p class="rekom-name">Paket Hebat Korean Soy Garlic Wings</p>
+          <p class="rekom-price">Rp 57.000</p>
+          <button class="btn small primary rekom-add" data-id="99" data-name="Big Mac" data-price="57000">Tambah</button>
+        </div>
+      </div>
+      <br>
+      <div class="rekom-item">
+        <img src="assets/images/big_mac.png" alt="Big Mac">
+        <div>
+          <p class="rekom-name">Big Mac</p>
+          <p class="rekom-price">Rp 48.000</p>
+          <button class="btn small primary rekom-add" data-id="99" data-name="Big Mac" data-price="48000">Tambah</button>
+        </div>
+      </div>
+      <br>
+      <div class="rekom-item">
+        <img src="assets/images/mc_spicy.png" alt="Big Mac">
+        <div>
+          <p class="rekom-name">Mc Spicy</p>
+          <p class="rekom-price">Rp 55.000</p>
+          <button class="btn small primary rekom-add" data-id="99" data-name="Big Mac" data-price="55000">Tambah</button>
+        </div>
+      </div>
+      <br>
+
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="col">
+        <h4>QUESTIONS</h4>
+        <p>Batik Shop (Demo)</p>
+      </div>
+      <div class="col">
+        <h4>CATEGORIES</h4>
+        <p>Menu Sarapan</p>
+        <p>Menu Utama</p>
+      </div>
+      <div class="col">
+        <h4>FOLLOW US</h4>
+        <p>Facebook • Instagram</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL PRODUK (Sederhana) -->
+  <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Tutup">&times;</button>
+      <img id="modalImg" src="" alt="">
+      <h3 id="modalTitle">Nama Produk</h3>
+      <p id="modalPrice">Rp 0</p>
+      <p id="modalDesc">Deskripsi singkat produk.</p>
+      <div class="modal-actions">
+        <button id="modalAdd" class="btn primary">Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ====== Banner slider setup (autoplay + pause on hover/focus) ======
+    const hero = document.getElementById('hero');
+    const heroPreview = hero.querySelector('.hero-preview');
+    const heroDotsContainer = document.getElementById('heroDots');
+    const images = [
+      'assets/images/mcdonald_building.png',
+      'assets/images/paket_prosperity.png',
+      'assets/images/travis_scott_meal.png'
+    ];
+    let current = 0;
+    let autoplayInterval = null;
+    const AUTOPLAY_MS = 4000; // 4 seconds
+    const FADE_MS = 600;
+
+    function updateHero(withFade = true) {
+      // update a11y label so screen reader users know which slide is shown
+      heroPreview.setAttribute('aria-label', `Slide ${current + 1} dari ${images.length}`);
+
+      // update dots active state
+      if (heroDotsContainer) {
+        const dots = heroDotsContainer.querySelectorAll('.hero-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      if (!withFade) {
+        heroPreview.style.backgroundImage = "url('" + images[current] + "')";
+        return;
+      }
+
+      // crossfade using overlay element
+      const overlay = document.createElement('div');
+      overlay.className = 'hero-fade';
+      overlay.style.backgroundImage = "url('" + images[current] + "')";
+      heroPreview.appendChild(overlay);
+      // force reflow then fade in
+      void overlay.offsetWidth;
+      overlay.style.opacity = '1';
+      setTimeout(() => {
+        heroPreview.style.backgroundImage = "url('" + images[current] + "')";
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, FADE_MS + 20);
+    }
+
+    function nextSlide() {
+      current = (current + 1) % images.length;
+      updateHero();
+    }
+    function prevSlide() {
+      current = (current - 1 + images.length) % images.length;
+      updateHero();
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      nextSlide();
+      resetAutoplay();
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      prevSlide();
+      resetAutoplay();
+    });
+
+    function startAutoplay() {
+      if (autoplayInterval) return;
+      autoplayInterval = setInterval(() => {
+        nextSlide();
+      }, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+      if (!autoplayInterval) return;
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+
+    function resetAutoplay() {
+      stopAutoplay();
+      // small delay before restarting to avoid immediate change after manual action
+      setTimeout(() => startAutoplay(), AUTOPLAY_MS);
+    }
+
+    // render dot navigation
+    function renderDots() {
+      if (!heroDotsContainer) return;
+      heroDotsContainer.innerHTML = '';
+      images.forEach((src, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'hero-dot';
+        btn.setAttribute('aria-label', `Slide ${idx + 1}`);
+        btn.setAttribute('data-index', idx);
+        btn.type = 'button';
+        btn.addEventListener('click', () => {
+          current = idx;
+          updateHero();
+          resetAutoplay();
+        });
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
+        });
+        heroDotsContainer.appendChild(btn);
+      });
+    }
+
+    // keyboard arrow navigation (only when focus is inside hero)
+    document.addEventListener('keydown', (e) => {
+      if (!hero.contains(document.activeElement)) return;
+      if (e.key === 'ArrowLeft') { prevSlide(); resetAutoplay(); }
+      if (e.key === 'ArrowRight') { nextSlide(); resetAutoplay(); }
+    });
+
+    // Pause on hover and focus (accessibility)
+    hero.addEventListener('mouseenter', stopAutoplay);
+    hero.addEventListener('mouseleave', startAutoplay);
+    hero.addEventListener('focusin', stopAutoplay);
+    hero.addEventListener('focusout', startAutoplay);
+
+    // initialize
+    renderDots();
+    updateHero(false);
+    startAutoplay();
+
+    // ====== Simple cart (local state only) ======
+    const cartCountEl = document.getElementById('cartCount');
+    let cartCount = 0;
+    function setCartCount(n) {
+      cartCount = n;
+      cartCountEl.textContent = cartCount;
+    }
+
+    // Add to cart buttons
+    document.querySelectorAll('.add-btn, .rekom-add').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        setCartCount(cartCount + 1);
+        // small animation
+        btn.classList.add('btn-pop');
+        setTimeout(()=> btn.classList.remove('btn-pop'), 300);
+      });
+    });
+
+    // ====== Modal product view ======
+    const modal = document.getElementById('productModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalAdd = document.getElementById('modalAdd');
+
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const product = e.target.closest('.product');
+        const src = product.querySelector('img').src;
+        const name = product.dataset.name;
+        const price = Number(product.dataset.price);
+        modalImg.src = src;
+        modalTitle.textContent = name;
+        modalPrice.textContent = 'Rp ' + price.toLocaleString();
+        modalDesc.textContent = 'Lezat dan hangat — sempurna untuk sarapan atau cemilan Anda.';
+        modalAdd.onclick = () => {
+          setCartCount(cartCount + 1);
+          closeModal();
+        };
+        openModal();
+      });
+    });
+
+    // modal open / close
+    function openModal() {
+      modal.setAttribute('aria-hidden', 'false');
+      modal.classList.add('open');
+    }
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('open');
+    }
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Cart button -> simple alert (demo)
+    document.getElementById('cartBtn').addEventListener('click', () => {
+      alert('Keranjang demo: ' + cartCount + ' item(s). (Fitur checkout belum diimplementasikan pada demo ini.)');
+    });
+
+    // small accessibility: close modal with esc
+    document.addEventListener('keydown', (e)=> {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  </script>
+</body>
+</html>
