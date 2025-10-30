@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum JS</title>
+</head>
+<body>
+    <h2>Berbagai Tide Data Dasat di JavaScript</h2>
+    <p id="outputTipeData"></p>
+    <h2>Latihan 1</h2>
+    <p id="test"></p>
+
+    <script>
+        // Deklarasi berbagai tipe data dasar
+        var angka = 42; // Number
+        var teks = "Ahmad Ruslan"; // String
+        var benar = true; // Boolean
+        var salah = false; // Boolean
+        var kosong = null; // Null
+        var tidakDidefinisikan; // Undefined
+        var daftar = ["apel", "pisang", "mangga"]; // Array
+        var tanggal = new Date(); // Date (objek tanggal)
+        var pola = /[A-Z]/; // RegExp (regular expression)
+        var orang = { nama: "Ruslan", umur: 21 }; // Object
+        // Gabungkan hasil ke satu variabel string
+        var hasil = "";
+        hasil += "<b>Number:</b> " + angka + "<br>";
+        hasil += "<b>String:</b> " + teks + "<br>";
+        hasil += "<b>Boolean 1:</b> " + benar + "<br>";
+        hasil += "<b>Boolean 0:</b> " + salah + "<br>";
+        hasil += "<b>Null:</b> " + kosong + "<br>";
+        hasil += "<b>Undefined:</b> " + tidakDidefinisikan + "<br>";
+        hasil += "<b>Array:</b> " + daftar.join(", ") + "<br>";
+        hasil += "<b>Date:</b> " + tanggal + "<br>";
+        hasil += "<b>RegExp:</b> " + pola + ", Ini Sirsak = " + pola.test("Sirsak") + "<br>";
+        hasil += "<b>Object:</b> nama = " + orang.nama + ", umur = " + orang.umur + "<br>";
+        // Tampilkan hasil di halaman
+        document.getElementById("outputTipeData").innerHTML = hasil;
+
+        var nama = "Dewi";
+        var nama = 67;
+            var umur = 21;
+            var isMahasiswa = true;
+            document.getElementById("test").innerHTML =
+                "Nama: " + nama + "<br>" +
+                "Umur: " + umur + "<br>" +
+                "Mahasiswa: " + isMahasiswa;
+    </script>
+</body>
+</html>

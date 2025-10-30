@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 - jQuery Hard (Fade)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        /* Style untuk kotak */
+        #kotak {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-top: 15px; /* Memberi jarak dari tombol */
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="sembunyikan">Sembunyikan</button>
+    <button id="tampilkan">Tampilkan</button>
+
+    <div id="kotak"></div>
+    
+    <script>
+        $(document).ready(function() {
+            // Event listener untuk tombol 'Sembunyikan'
+            $("#sembunyikan").click(function() {
+                // Menggunakan metode .fadeOut() untuk membuat kotak menghilang perlahan
+                // Angka 1000 adalah durasi dalam milidetik (1 detik)
+                $("#kotak").fadeOut(1000); 
+            });
+
+            // Event listener untuk tombol 'Tampilkan'
+            $("#tampilkan").click(function() {
+                // Menggunakan metode .fadeIn() untuk membuat kotak muncul perlahan
+                // Angka 1000 adalah durasi dalam milidetik (1 detik)
+                $("#kotak").fadeIn(1000);
+            });
+        });
+    </script>
+
+</body>
+</html>

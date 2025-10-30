@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 3 - jQuery Medium</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="klikTombol">Klik Aku</button>
+    <p id="paragrafHasil">Teks awal paragraf.</p>
+    
+    <script>
+        $(document).ready(function() {
+            // Pasang event listener 'click' pada tombol dengan ID 'klikTombol'
+            $("#klikTombol").click(function() {
+                
+                // 1. Mengubah teks pada paragraf
+                $("#paragrafHasil").text("Tombol sudah diklik!");
+                
+                // 2. Mengubah warna teks menjadi merah menggunakan .css()
+                $("#paragrafHasil").css("color", "red");
+            });
+        });
+    </script>
+
+</body>
+</html>

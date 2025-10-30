@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelian Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #outputTotal {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pembelian Barang</h1>
+
+    <ul id="daftarBarang">
+        </ul>
+
+    <button id="hitungTotalBtn">Hitung Total Harga</button>
+
+    <p id="outputTotal">Total harga pembelian adalah: Rp 0</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data barang dalam bentuk array of objects
+            const barang = [
+                { nama: "Susu UHT", hargaSatuan: 42000, jumlah: 10 },
+                { nama: "Roti Tawar", hargaSatuan: 30000, jumlah: 3 },
+                { nama: "Mie Instan", hargaSatuan: 20000, jumlah: 5 },
+                { nama: "Sosis", hargaSatuan: 51000, jumlah: 7 }
+            ];
+
+            const daftarBarangUL = document.getElementById('daftarBarang');
+            const hitungTotalBtn = document.getElementById('hitungTotalBtn');
+            const outputTotalP = document.getElementById('outputTotal');
+
+            // Fungsi untuk format angka ke mata uang Rupiah
+            function formatRupiah(angka) {
+                const formatter = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                });
+                return formatter.format(angka);
+            }
+
+            // Tampilkan daftar barang awal
+            function tampilkanDaftarBarang() {
+                daftarBarangUL.innerHTML = ''; // Kosongkan daftar sebelum mengisi ulang
+                barang.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.nama} — ${formatRupiah(item.hargaSatuan)} × ${item.jumlah}`;
+                    daftarBarangUL.appendChild(listItem);
+                });
+            }
+
+            // Panggil fungsi untuk menampilkan daftar barang saat halaman dimuat
+            tampilkanDaftarBarang();
+
+            // Event listener untuk tombol "Hitung Total Harga"
+            hitungTotalBtn.addEventListener('click', function() {
+                let totalHargaPembelian = 0;
+
+                // Iterasi setiap item barang untuk menghitung subtotal dan total
+                barang.forEach(item => {
+                    const subtotal = item.hargaSatuan * item.jumlah;
+                    totalHargaPembelian += subtotal;
+                });
+
+                // Tampilkan total harga ke dalam elemen <p>
+                outputTotalP.innerHTML = `Total harga pembelian adalah: <b>${formatRupiah(totalHargaPembelian)}</b>`;
+            });
+        });
+    </script>
+</body>
+</html>

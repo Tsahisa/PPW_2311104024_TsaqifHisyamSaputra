@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum JS</title>
+</head>
+
+<body>
+    <h1>Function</h1>
+    <div id="hasil"></div>
+    <h1>Hasil Penjumlahan dengan Function</h1>
+    <div id="hasilTambah"></div>
+    <h1>Hasil Perkalian dengan Function</h1>
+    <div id="hasilKali"></div>
+
+    <script>
+        function tambah(a, b) {
+            return a + b;
+        }
+
+        var kali = function(a, b) {
+            return a * b;
+        };
+
+        document.getElementById("hasil").innerHTML =
+            "Hasil penjumlahan dari tambah(5, 3): " + tambah(5, 3) + "<br>" +
+            "Hasil perkalian dari kali(5, 3): " + kali(5, 3);
+
+        // Pemanggilan fungsi dan penyimpanan hasilnya
+            var simpan = tambah(3, 5); // simpan = 8
+            var hasil1 = tambah(simpan, 2); // 8 + 2 = 10
+            var hasil2 = tambah(tambah(3, 5), 2); // (8) + 2 = 10
+            var hasil3 = tambah(tambah(2, 3), 4); // (5) + 4 = 9
+        // Tampilkan hasil ke HTML
+        document.getElementById("hasilTambah").innerHTML =
+            "tambah(3,5) = " + simpan + "<br>" +
+            "tambah(simpan,2) = " + hasil1 + "<br>" +
+            "tambah(tambah(3,5),2) = " + hasil2 + "<br>" +
+            "tambah(tambah(2,3),4) = " + hasil3;
+        document.getElementById("hasilKali").innerHTML =
+            "kali(4,5) = " + kali(4, 5); // contoh fungsi ekspresi
+    </script>
+</body>
+
+</html>

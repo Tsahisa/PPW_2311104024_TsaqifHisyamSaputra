@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum JS</title>
+</head>
+
+<body>
+    <h1>Percabangan If...Else If...</h1>
+    <p id="outputPercabangan"></p>
+    <h2>Perulangan While</h2>
+    <p id="whileLoop"></p>
+
+    <script>
+        var pendidikan = "S2";
+        var gelar;
+        if (pendidikan === "S1") {
+            gelar = "Sarjana";
+        } else if (pendidikan === "S2") {
+            gelar = "Master";
+        } else if (pendidikan === "S3") {
+            gelar = "Doktor";
+        } else {
+            gelar = "Tidak diketahui";
+        }
+        document.getElementById("outputPercabangan").innerHTML =
+            "Sekarang kamu: " + pendidikan + ", gelar kamu: " + gelar;
+        var text1 = "";
+        var i = 0;
+        while (i < 3) {
+            text1 += "Perulangan while ke-" + i + "<br>"; // Tambah teks dengan nomor perulangan
+            i++; // Increment i by 1
+        }
+        document.getElementById("whileLoop").innerHTML = text1;
+    </script>
+</body>
+
+</html>
